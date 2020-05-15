@@ -10,12 +10,8 @@ import java.util.List;
 @Service
 public class ToDoService implements ToDoServiceInterface{
 
-    private final ToDoRepo repository;
-
     @Autowired
-    public ToDoService(ToDoRepo repository) {
-        this.repository = repository;
-    }
+    private ToDoRepo repository;
 
     @Override
     public List<ToDoModel> retrieveItems() {
