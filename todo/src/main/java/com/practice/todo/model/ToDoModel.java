@@ -15,6 +15,8 @@ public class ToDoModel {
 
     @NotBlank
     private String item;
+    
+    @Column(columnDefinition = "boolean default false")
     private boolean completed;
 
     public ToDoModel() {
