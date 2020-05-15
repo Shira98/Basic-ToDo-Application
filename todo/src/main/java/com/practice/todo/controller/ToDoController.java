@@ -17,12 +17,8 @@ import java.util.List;
 @RequestMapping(value = "/ToDo")
 public class ToDoController {
 
-    private final ToDoService toDoService;
-
     @Autowired
-    public ToDoController(ToDoService toDoService) {
-        this.toDoService = toDoService;
-    }
+    private ToDoService toDoService;
 
     // Returns all to-do items in the database.
     @GetMapping
