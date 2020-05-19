@@ -13,7 +13,7 @@ Contains **integration** and **unit** test folders under the package **com.pract
 The database *name*, *username* and *password* can be changed in the **todo/src/main/resources/application.properties** file based on  preference. 
  
 ## H2 Connection Setup
-Configuration details are present in the **todo/src/test/resources/appplication-test.properties** file and can be changed based on preference.
+Configuration details are present in the **todo/src/test/resources/application-test.properties** file and can be changed based on preference.
 
 ## Postman for Verifying the Connection
 Uses Postman to perform *GET*, *POST*, *PUT* and *DELETE* requests, and checks if the changes are reflected in the database respectively. Check by logging in as the user and by using the database specified during the MySQL connection setup while performing the requests through *Postman*.
