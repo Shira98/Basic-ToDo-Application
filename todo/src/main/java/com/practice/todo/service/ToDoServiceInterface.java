@@ -28,7 +28,7 @@ public interface ToDoServiceInterface {
     Optional<ToDoModel> retrieveItemByID(Integer id);
 
     /*
-    * Updates an existing To-Do item by ID.
+    * Updates an existing To-Do item.
     * */
-    ToDoModel updateItem(ToDoModel item );
+    ToDoModel updateItem(ToDoModel item);
 }
