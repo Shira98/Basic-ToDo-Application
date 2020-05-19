@@ -89,4 +89,69 @@ class ToDoServiceTest {
         Assertions.assertFalse(result, "Found item that doesn't exist");
     }
 
+    @Test
+    void testUpdateItemSuccess(){
+
+        //Setup mock repository:
+        ToDoModel mockItem = new ToDoModel(1, "Buy Groceries", false);
+        ToDoModel updatedItem = new ToDoModel(1, "Buy Groceries", true);
+
+        when(repository.findById(1)).thenReturn(Optional.of(mockItem));
+        when(repository.save(any())).thenReturn(updatedItem);
+
+        //Execute the service call:
+        ToDoModel returnedItem = service.updateItem(updatedItem);
+
+        //Assertions:
+        Assertions.assertNotNull(returnedItem);
+        Assertions.assertTrue(returnedItem.isCompleted());
+
+
+    }
+
+    @Test
+    void testUpdateItemNotFound(){
+
+        //Setup mock repository:
+        ToDoModel mockItem = new ToDoModel(3, "Buy Groceries", false);
+
+        when(repository.findById(3)).thenReturn(Optional.empty());
+
+        //Execute the service call:
+        ToDoModel returnedItem = service.updateItem(mockItem);
+
+        //Assertions:
+        Assertions.assertNull(returnedItem);
+    }
+
+    @Test
+    void testRetrieveItemByIDSuccess(){
+
+        //Setup mock repository:
+        ToDoModel mockItem = new ToDoModel(1, "Buy Groceries", false);
+
+        when(repository.findById(1)).thenReturn(Optional.of(mockItem));
+
+        //Execute the service call:
+        Optional<ToDoModel> returnedItem = service.retrieveItemByID(1);
+
+        //Assertions:
+        Assertions.assertTrue(returnedItem.isPresent());
+        Assertions.assertEquals(returnedItem.get(), mockItem);
+
+    }
+
+    @Test
+    void testRetrieveItemByIDNotFound(){
+
+        //Setup mock repository:
+        when(repository.findById(1)).thenReturn(Optional.empty());
+
+        //Execute the service call:
+        Optional<ToDoModel> returnedItem = service.retrieveItemByID(1);
+
+        //Assertions:
+        Assertions.assertFalse(returnedItem.isPresent() );
+
+    }
 }

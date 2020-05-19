@@ -6,16 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ToDoService implements ToDoServiceInterface{
 
-    private final ToDoRepo repository;
-
     @Autowired
-    public ToDoService(ToDoRepo repository) {
-        this.repository = repository;
-    }
+    private ToDoRepo repository;
 
     @Override
     public List<ToDoModel> retrieveItems() {
@@ -37,4 +34,16 @@ public class ToDoService implements ToDoServiceInterface{
         return false;
     }
 
+    @Override
+    public Optional<ToDoModel> retrieveItemByID(Integer id){
+        return repository.findById(id);
+    }
+
+    @Override
+    public ToDoModel updateItem(ToDoModel item ){
+        if(repository.findById(item.getId( )).isPresent())
+            return repository.save(item);
+        else
+            return null;
+    }
 }

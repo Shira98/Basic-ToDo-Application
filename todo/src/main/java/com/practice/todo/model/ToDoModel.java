@@ -1,9 +1,6 @@
 package com.practice.todo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -15,6 +12,8 @@ public class ToDoModel {
 
     @NotBlank
     private String item;
+
+    @Column(columnDefinition = "boolean default false")
     private boolean completed;
 
     public ToDoModel() {

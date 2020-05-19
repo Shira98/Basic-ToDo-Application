@@ -17,12 +17,8 @@ import java.util.List;
 @RequestMapping(value = "/ToDo")
 public class ToDoController {
 
-    private final ToDoService toDoService;
-
     @Autowired
-    public ToDoController(ToDoService toDoService) {
-        this.toDoService = toDoService;
-    }
+    private ToDoService toDoService;
 
     // Returns all to-do items in the database.
     @GetMapping
@@ -55,6 +51,36 @@ public class ToDoController {
                 return ResponseEntity.notFound().build();
             }
 
+    }
+
+    // Updates an existing item.
+    @PutMapping
+    public ResponseEntity<?> updateItem(@Valid @NotNull @RequestBody ToDoModel item ){
+        ToDoModel itemExists = toDoService.updateItem(item);
+
+        try{
+            if(itemExists!=null) {
+                return ResponseEntity.ok()
+                        .location(new URI("/ToDo/" + itemExists.getId()))
+                        .body(itemExists);
+            } else{
+                return ResponseEntity.notFound().build();
+            }
+        }catch(URISyntaxException ex){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // Returns a specific to-do item.
+    @GetMapping("{id}")
+    public ResponseEntity<?> retrieveItemByID(@PathVariable Integer id)
+    {
+        if(toDoService.retrieveItemByID(id).isPresent()){
+            return ResponseEntity.ok()
+                    .body(toDoService.retrieveItemByID(id));
+        } else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
