@@ -3,6 +3,7 @@ package com.practice.todo.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.practice.todo.model.ToDoModel;
 import com.practice.todo.repo.ToDoRepo;
+import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testRetrieveItems() throws Exception{
+    void testRetrieveItems() throws JSONException {
 
         // Perform the GET request:
         ResponseEntity<String> responseEntity = this.restTemplate
@@ -51,7 +52,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testCreateItemSuccess() throws Exception {
+    void testCreateItemSuccess() throws JSONException {
 
         // Set up item to create:
         ToDoModel item = new ToDoModel();
@@ -74,7 +75,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testCreateItemNullFailure() throws Exception{
+    void testCreateItemNullFailure() {
 
         // Set up a null item to create:
         ToDoModel item = new ToDoModel();
@@ -89,14 +90,14 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testCreateItemFieldFailure() throws Exception {
+    void testCreateItemFieldFailure() {
 
         // Set up item to create with a bad JSON string:
         String Item = "{\"name\":\"John\", \"number\":879, \"completed\":false}";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> request = new HttpEntity<String>(Item , headers);
+        HttpEntity<String> request = new HttpEntity<>(Item, headers);
 
         // Perform the POST request:
         ResponseEntity<String> responseEntity = this.restTemplate
@@ -108,7 +109,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testDeleteItemSuccess() throws Exception {
+    void testDeleteItemSuccess() {
 
         // Perform the DELETE request:
         ResponseEntity<Object> responseEntity = this.restTemplate
@@ -124,7 +125,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testDeleteItemNotFound() throws Exception {
+    void testDeleteItemNotFound() {
 
         // Perform the DELETE request for a non-existent item:
         ResponseEntity<Object> responseEntity = this.restTemplate
@@ -136,7 +137,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testUpdateItemSuccess() throws Exception{
+    void testUpdateItemSuccess()  {
 
         // Set up item to update its "completed" & "item" attributes to "true" & "Buy Veggies":
         ToDoModel item = new ToDoModel(1,"Buy Veggies", true);
@@ -144,8 +145,6 @@ public class ToDoIntegrationTest {
         // Perform the PUT request:
         this.restTemplate
                 .put("http://localhost:" + port + "/ToDo", item, Object.class);
-
-        String expected = "{ \"id\":1,\"item\":\"Buy Veggies\",\"completed\":true }";
 
         // Double check the item has been updated:
         Optional<ToDoModel> returnedItem = repository.findById(1);
@@ -158,14 +157,14 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testUpdateItemNotFound() throws Exception{
+    void testUpdateItemNotFound() {
 
         // Set up item to update with non-existent ID:
         ToDoModel item = new ToDoModel(12,"Buy Groceries", true);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> request = new HttpEntity<String>(asJsonString(item), headers);
+        HttpEntity<String> request = new HttpEntity<>(asJsonString(item), headers);
 
         // Perform the PUT request:
         ResponseEntity<String> responseEntity = this.restTemplate
@@ -177,14 +176,14 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testUpdateItemFailure() throws Exception{
+    void testUpdateItemFailure() {
 
         // Set up item to update with a bad JSON string:
         String Item = "{\"id\":1, \"number\":879, \"completed\":false}";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> request = new HttpEntity<String>(Item , headers);
+        HttpEntity<String> request = new HttpEntity<>(Item, headers);
 
         // Perform the POST request:
         ResponseEntity<String> responseEntity = this.restTemplate
@@ -196,7 +195,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testRetrieveItemByIDSuccess() throws Exception{
+    void testRetrieveItemByIDSuccess() {
 
         // Perform the GET request:
         ResponseEntity<ToDoModel> responseEntity = this.restTemplate
@@ -210,7 +209,7 @@ public class ToDoIntegrationTest {
     }
 
     @Test
-    void testRetrieveItemByIDNotFound() throws Exception {
+    void testRetrieveItemByIDNotFound() {
 
         // Perform the GET request:
         ResponseEntity<String> responseEntity = this.restTemplate
