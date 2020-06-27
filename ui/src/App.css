@@ -1,0 +1,171 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+ 
+
+body {
+    margin-top: 90px; 
+    background-color: #1e574d6b; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    padding-bottom: 200px; 
+}
+ 
+h1  {
+    font-size: 60px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+small{
+    font-style: italic;
+}
+
+h3{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px; 
+}
+
+.main-todo-input {
+    background: #fff;
+    padding: 0 120px 0 0px; 
+    border-radius: 1px;
+    margin-top: 80px;
+    box-shadow: 0px 0px 0px 6px rgba(255, 255, 255, 0.3)
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative
+}
+
+.main-todo-input:before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    width: 50px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.41);
+    left: 50%;
+    margin-left: -25px
+}
+
+.main-todo-input-item {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #eee;
+    height: 50px;
+    position: relative
+}
+
+.main-todo-input-item input:first-child {
+    border-radius: none !important; 
+    border-color: #fff;
+}
+
+.main-todo-input-item input {
+    float: left;
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px; 
+} 
+
+.main-search-button {
+    position: absolute; 
+    right: 0px;
+    height: 50px;
+    width: 120px;
+    color: #fff;
+    top: 0;
+    border: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px; 
+     
+}
+
+.main-todo-input-wrap {
+    max-width: 500px;
+    margin: 20px auto;
+    position: relative
+}
+
+.rows:hover {
+    background-color: rgba(212, 228, 220, 0.63);
+  }
+
+.btn-icon { 
+    border: none;  
+    color: white;  
+    padding: 7px 18px;  
+    font-size: 16px;  
+    margin: 10px;
+  }
+   
+.btn-icon:hover { 
+    color: black;
+  }
+    
+
+:focus {
+    outline: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .main-todo-input {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 14px 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.0)
+    }
+
+    .main-todo-input-item {
+        width: 100%;
+        border: 1px solid #eee;
+        height: 50px;
+        border: none;
+        margin-bottom: 10px
+    }
+
+    .main-todo-input-item input {
+        border-radius: 6px !important;
+        background: #fff
+    }
+
+    .main-search-button {
+        position: relative;
+        float: left;
+        width: 100%;
+        border-radius: 6px
+    }
+}
+
+.remove {
+    float: right;
+    color: #757575 !important;
+    font-size: 14px
+}
+
+#list-items {
+    padding-left: 20px;
+    padding-top: 15px
+}
+
+ 
+
+.todo-text {
+    color: #757575;
+    margin-left: 10px
+}
+ 
+
+.todo-listing {
+    padding: 0px 29px 0px 0px;
+    margin-top: 54px !important
+}
+
+ 
+ 
