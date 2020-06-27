@@ -1,6 +1,7 @@
 # Basic To-Do Application
 A *REST* based *Spring* to-do applcation with basic functionalities - *create* item, *delete* item, *update* item, *find* item by ID and *retrieve* all items. Uses *MySQL* database connection and *Postman* for verifying the requests. 
 Includes unit and integration tests for every functionality. Testing is done using the in-memory database *H2*.
+Contains user interface created by *ReactJS*.
 
 ## Application Structure
 ### todo/src/main/java
