@@ -91,15 +91,15 @@ export default class ListItemsComponent extends React.Component {
                         >  
                             { 
                             props =>  (
-                                <div className="main-todo-input fl-wrap">
+                                <div className="main-todo-input fl-wrap1">
                                     <Form >
-                                        <div className="main-todo-input-item">
+                                        <div className="main-todo-input-item" style={{paddingRight: "0.4px"}}>
                                             <fieldset className="form-group"> 
                                                 <Field className="form-control" id="todo-list-item" type="text" name="new_item" 
                                                         placeholder="What do you want to do?"  />
                                             </fieldset> 
                                         </div>
-                                        <button className="add-items main-search-button btn btn-success" type="submit" disabled={!props.dirty && props.isValid}>ADD ITEM</button>
+                                        <button className="add-items main-search-button btn btn-success" style={{backgroundColor: "#798199", borderRadius: "0px"}} type="submit" disabled={!props.dirty && props.isValid}>ADD ITEM</button>
                                     </Form>
                                 </div>
                                 ) 
@@ -155,7 +155,7 @@ export default class ListItemsComponent extends React.Component {
 
     render() { 
         return ( 
-            <div className="container">  
+            <div className="container" id="all-items-container">  
                 {this.renderAdd()}     {/* Renders the add item input. */}
                 {this.renderTable()}   {/* Renders the table of items if number of items are not zero. */}
             </div>   

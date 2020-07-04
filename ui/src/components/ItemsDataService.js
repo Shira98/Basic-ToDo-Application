@@ -14,17 +14,17 @@ class ItemsDataService {
         return axios.delete(`${ALL_ITEMS_API_URL}/${id}`);
     }
 
-    retrieveItem( id) {
+    retrieveItem(id) {
         return axios.get(`${ALL_ITEMS_API_URL}/${id}`);
     }
 
     updateItem(item) {
-        console.log('UPDATE executed service')
+        // console.log('UPDATE executed service')
         return axios.put(`${ALL_ITEMS_API_URL}`, item);
     }
 
     createItem(item) {
-        console.log('executed service')
+        // console.log('executed service')
         return axios.post(`${ALL_ITEMS_API_URL}`, item);
     }
 

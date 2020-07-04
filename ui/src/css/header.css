@@ -1,8 +1,31 @@
-.fixed-top{ 
-    background-color: #3f8073c4;
-    /* background: linear-gradient(0deg, #4244436b, #4244436b), url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRIt_2xI6PigBckL6tSn7uqUMyQMDIIKjDihg&usqp=CAU); */
-    /* background-size: cover; */
-    /* opacity: 0.5; */
+#header{  
+    background-color: #373c47; 
+    height: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
  
+#header h3{
+    font-style: italic; 
+    margin-left: 10px;
+    font-size: 16px;
+    letter-spacing: 5px; 
+   
+ } 
  
+/* .logo{
+    display: inline;
+}
+
+.rotate{
+    opacity: 0.9;
+    position: relative;
+    height: 60px; 
+    margin-bottom: 8px;
+}
+
+h1 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24%;
+  } */
