@@ -1,0 +1,2 @@
+Change the username and password in "main/resources/application.properties" file based on your preference.
+ 
