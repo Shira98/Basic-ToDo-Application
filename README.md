@@ -25,6 +25,6 @@ Uses Postman to perform *GET*, *POST*, *PUT* and *DELETE* requests, and checks i
 ## Running The Application 
 - Start MySQL database.
 - Run the Spring Boot project from IDE.
-- Run the React project.
+- Install the required node modules and run the React project.
 
 The application should open in the default browser.
