@@ -69,7 +69,7 @@ export default class ItemComponent extends React.Component {
 
     renderDescription(){ 
             return(  
-                <fieldset className="form-group" >
+                <fieldset className="form-group">
                     <label>Edit Item's Description</label>
                     <Field className="form-control"  type="text" name="item"  placeholder="Please enter a description." />
                 </fieldset>  
@@ -77,7 +77,7 @@ export default class ItemComponent extends React.Component {
     }
 
 
-    render() {
+    renderUpdateScreen() {
 
       let { item, id } = this.state
 
@@ -98,7 +98,7 @@ export default class ItemComponent extends React.Component {
                       props => (
                           
                         <div className="main-todo-input fl-wrap" style={{display:"block" ,textAlign:"center", padding: "20px 0px 20px 0px"}} >
-                        <Form style={{display: "inline-block"}}>
+                        <Form style={{display: "inline-block"}} className="updateItem">
                             
                             <ErrorMessage name="item" component="div" className="alert alert-warning" /> 
                             
@@ -108,9 +108,9 @@ export default class ItemComponent extends React.Component {
                             
                             {this.renderDescription()}   
 
-                            <button className="btn btn-success" type="submit" disabled={!props.dirty && props.isValid}>SAVE</button>
+                            <button className="btn btn-success" style={{backgroundColor: "#798199"}} type="submit" disabled={!props.dirty && props.isValid}>SAVE</button>
                             &nbsp;&nbsp;
-                            <button className="btn btn-success" onClick={() => this.backClicked()}>BACK</button>
+                            <button className="btn btn-success" style={{backgroundColor: "#798199"}} onClick={() => this.backClicked()}>BACK</button>
                         </Form>
                         </div> 
                         )
@@ -120,5 +120,13 @@ export default class ItemComponent extends React.Component {
             </div>
         </div>
     )
+  }
+
+  render(){
+      return(
+        <div className="container" id="update-item-container">  
+        {this.renderUpdateScreen()}
+        </div>
+      )
   }
 } 
