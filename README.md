@@ -28,5 +28,6 @@ Uses Postman to perform *GET*, *POST*, *PUT* and *DELETE* requests, and checks i
 - Install the required node modules and run the React project.
 
 The application should open in the default browser.
-
-<img src="/Images/Empty_List.png" alt="My cool logo" height=400/>
+<p align="center">
+ <img src="/Images/Empty_List.png" alt="My cool logo" height=400/>
+</p>
