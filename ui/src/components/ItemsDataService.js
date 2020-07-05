@@ -3,32 +3,30 @@ import axios from 'axios';
 const TODO_API_URL = 'http://localhost:8080';
 const ALL_ITEMS_API_URL = `${TODO_API_URL}/ToDo`;
 
-class ItemsDataService {
+export default new class ItemsDataService {
 
     retrieveAllItems( ) {
+        //console.log('executed retrieveAllItems service')
         return axios.get(`${ALL_ITEMS_API_URL}`);
     }
  
     deleteItem(id) {
-        //console.log('executed service')
+        //console.log('executed deleteItem service')
         return axios.delete(`${ALL_ITEMS_API_URL}/${id}`);
     }
 
     retrieveItem(id) {
+        //console.log('executed retrieveItem service')
         return axios.get(`${ALL_ITEMS_API_URL}/${id}`);
     }
 
     updateItem(item) {
-        // console.log('UPDATE executed service')
+        //console.log('executed updateItem service')
         return axios.put(`${ALL_ITEMS_API_URL}`, item);
     }
 
     createItem(item) {
-        // console.log('executed service')
+        //console.log('executed createItem service')
         return axios.post(`${ALL_ITEMS_API_URL}`, item);
-    }
-
+    } 
 }
-
-export default new ItemsDataService() 
-

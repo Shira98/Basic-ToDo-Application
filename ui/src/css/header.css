@@ -2,30 +2,17 @@
     background-color: #373c47; 
     height: 150px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;  
 }
  
 #header h3{
     font-style: italic; 
     margin-left: 10px;
     font-size: 16px;
-    letter-spacing: 5px; 
-   
+    letter-spacing: 5px;   
  } 
+
+.animate__animated.animate__fadeIn{
+    --animate-duration: 2s;
+}
  
-/* .logo{
-    display: inline;
-}
-
-.rotate{
-    opacity: 0.9;
-    position: relative;
-    height: 60px; 
-    margin-bottom: 8px;
-}
-
-h1 {
-    display: inline-block;
-    vertical-align: middle;
-    width: 24%;
-  } */

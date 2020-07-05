@@ -1,6 +1,7 @@
 import React  from 'react'; 
 import ItemsDataService from './ItemsDataService';
 import { Formik, Form, Field } from 'formik'; 
+import FadeIn from 'react-fade-in';
 
 export default class ListItemsComponent extends React.Component {
 
@@ -34,7 +35,6 @@ export default class ListItemsComponent extends React.Component {
             )
     }
 
-    
     deleteItemClicked(id) {
         ItemsDataService.deleteItem(id)
             .then(
@@ -78,16 +78,14 @@ export default class ListItemsComponent extends React.Component {
             <div className="row">
                 <div className="col-md-12">
                     <div  className="main-todo-input-wrap">
-                        <Formik   
-
+                        <Formik    
                             initialValues = {{new_item: ''}}
 
                             onSubmit={this.onSubmit} 
                             validateOnChange={false}
                             validateOnBlur={false} 
                             validate={this.validate}
-                            enableReinitialize={true} 
-                            
+                            enableReinitialize={true}  
                         >  
                             { 
                             props =>  (
@@ -95,8 +93,7 @@ export default class ListItemsComponent extends React.Component {
                                     <Form >
                                         <div className="main-todo-input-item" style={{paddingRight: "0.4px"}}>
                                             <fieldset className="form-group"> 
-                                                <Field className="form-control" id="todo-list-item" type="text" name="new_item" 
-                                                        placeholder="What do you want to do?"  />
+                                                <Field className="form-control" id="todo-list-item" type="text" name="new_item" placeholder="What do you want to do?"  />
                                             </fieldset> 
                                         </div>
                                         <button className="add-items main-search-button btn btn-success" style={{backgroundColor: "#798199", borderRadius: "0px"}} type="submit" disabled={!props.dirty && props.isValid}>ADD ITEM</button>
@@ -113,53 +110,54 @@ export default class ListItemsComponent extends React.Component {
   
     renderTable(){
         return(
-            <div class="row">
-                    <div class="col-md-12">
-                        <div class="main-todo-input-wrap">
-                            <table className="table main-todo-input fl-wrap todo-listing" style={{tableLayout:"fixed"}}>
-                                <col width="30"/> 
-                                    <col width="140"/> 
-                                        <col width="100"/>  
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Description</th> 
-                                                    <th style={{textAlign:"center"}} >Update/Delete</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {
-                                                !this.state.items.length ?
-                                                
-                                                <tr><td colspan="3" style={{textAlign:"center"}}><i>Please add an item to get started.</i></td></tr>
-                                                :
-                                                this.state.items.map(
-                                                    item => 
-                                                        <tr className="rows" id="list-items" key={item.id}>
-                                                            <td>{item.id}</td>
-                                                            <td style={{wordWrap:"break-word"}}>{item.item}</td>
-                                                            <td style={{textAlign:"center"}} >
-                                                                <button className="btn btn-success btn-icon" onClick={() => this.updateItemClicked(item.id)}><i class='fa fa-edit'></i></button>
-                                                                <button className="btn btn-danger btn-icon" onClick={() => this.deleteItemClicked(item.id)}><i class='fa fa-close'></i></button>
-                                                            </td>
-                                                        </tr>
-                                                )
-                                            }
-                                            </tbody>
-                            </table> 
-                        </div>
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="main-todo-input-wrap">
+                        <table className="table main-todo-input fl-wrap todo-listing" style={{tableLayout:"fixed"}}>
+                            <col width="30"/> 
+                            <col width="140"/> 
+                            <col width="100"/>  
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Description</th> 
+                                        <th style={{textAlign:"center"}} >Update/Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    !this.state.items.length ?
+                                    
+                                    <tr><td colspan="3" style={{textAlign:"center"}}><i>Please add an item to get started.</i></td></tr>
+                                    :
+                                    this.state.items.map(
+                                        item => 
+                                            <tr className="rows" id="list-items" key={item.id}>
+                                                <td>{item.id}</td>
+                                                <td style={{wordWrap:"break-word"}}>{item.item}</td>
+                                                <td style={{textAlign:"center"}} >
+                                                    <button className="btn btn-success btn-icon" onClick={() => this.updateItemClicked(item.id)}><i class='fa fa-edit'></i></button>
+                                                    <button className="btn btn-danger btn-icon" onClick={() => this.deleteItemClicked(item.id)}><i class='fa fa-close'></i></button>
+                                                </td>
+                                            </tr>
+                                    )
+                                }
+                                </tbody>
+                        </table> 
                     </div>
                 </div>
+            </div>
             )
     }
 
     render() { 
-        return ( 
+        return (  
             <div className="container" id="all-items-container">  
-                {this.renderAdd()}     {/* Renders the add item input. */}
-                {this.renderTable()}   {/* Renders the table of items if number of items are not zero. */}
-            </div>   
+                <FadeIn> 
+                    {this.renderAdd()}     {/* Renders the add item form. */}
+                    {this.renderTable()}   {/* Renders the table of items if number of items are not zero. */}
+                </FadeIn>
+            </div>    
         )
-    }
-    
+    } 
 } 
