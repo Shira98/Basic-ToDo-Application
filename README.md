@@ -29,5 +29,5 @@ Uses Postman to perform *GET*, *POST*, *PUT* and *DELETE* requests, and checks i
 
 The application should open in the default browser.
 <p align="center">
- <img src="/Images/UI.gif" alt="My cool logo" height=400/>
+ <img src="Images/UI.gif" alt="My cool logo" height=400/>
 </p>
